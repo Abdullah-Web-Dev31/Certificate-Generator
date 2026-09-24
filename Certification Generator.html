@@ -52,6 +52,45 @@
       opacity: 0.85;
       line-height: 1.4;
     }
+
+    .row {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    label {
+      font-size: 12px;
+      opacity: 0.9;
+    }
+    input,
+    textarea {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(0, 0, 0, 0.35);
+      color: #e9eefc;
+      padding: 10px 12px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+    input:focus,
+    textarea:focus {
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+    input[type="file"] {
+      padding: 10px 10px;
+    }
+
+    .fileHint {
+      font-size: 12px;
+      opacity: 0.8;
+      line-height: 1.35;
+    }
   </style>
   <body>
     <div class="page">
@@ -63,6 +102,57 @@
           Validation rules apply. Print is enabled only when all fields are ✅
           valid.
         </p>
+
+        <div class="row" id="rowName">
+          <label for="studentName">Student Name</label>
+          <input
+            type="text"
+            id="studentName"
+            placeholder="e.g., Ahmed Al Esaam"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="row" id="rowCourse">
+          <label for="courseName">Course Name</label>
+          <textarea
+            id="courseName"
+            placeholder="e.g.,Goal Settings: Crafting and Achieving Your Objectives."
+          ></textarea>
+        </div>
+
+        <div class="row" id="rowInstructor">
+          <label for="instructorName">Instructor Name</label>
+          <input
+            id="instructorName"
+            type="text"
+            placeholder="e.g., Dr. Mohammed Abu-Hadhoud"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="row" id="rowSignature">
+          <label for="signatureFile">Signature Image</label>
+          <input id="signatureFile" type="file" accept="image/*" />
+          <div class="fileHint">
+            Upload a PNG/JPG/WebP. It will update the signature instantly.
+          </div>
+        </div>
+
+        <div class="row" id="rowIssued">
+          <label for="issuedDate">Issued Date</label>
+          <input id="issuedDate" type="date" />
+        </div>
+
+        <div class="row" id="rowSerial">
+          <label for="serial">Certificate Serial</label>
+          <input
+            id="serial"
+            type="text"
+            placeholder="e.g., MD-2025-000123"
+            autocomplete="off"
+          />
+        </div>
       </div>
     </div>
   </body>
