@@ -25,6 +25,45 @@
       background: #0b1020;
       color: #e9eefc;
     }
+
+    .Page {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .panel {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .panel h2 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      letter-spacing: 0.2px;
+    }
+    .hint {
+      margin: 0 0 14px;
+      font-size: 12px;
+      opacity: 0.85;
+      line-height: 1.4;
+    }
   </style>
-  <body></body>
+  <body>
+    <div class="page">
+      <div class="panel" id="formPanel">
+        <h2>Certificate Fields</h2>
+        <p class="hint">
+          Type values below — the certificate updates instantly.
+          <br />
+          Validation rules apply. Print is enabled only when all fields are ✅
+          valid.
+        </p>
+      </div>
+    </div>
+  </body>
 </html>
