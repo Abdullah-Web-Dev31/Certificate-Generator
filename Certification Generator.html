@@ -350,6 +350,68 @@
       position: relative;
       z-index: 5;
     }
+
+    .mdc-bottom {
+      position: absolute;
+      left: 34px;
+      right: 34px;
+      bottom: 7px;
+      z-index: 2;
+    }
+
+    .mdc-bottomTable {
+      width: 100%;
+    }
+
+    /* ✅ Table columns widths and alignment */
+    .mdc-sigCol,
+    .mdc-sealCol {
+      width: 65%;
+      vertical-align: bottom;
+      padding-left: 0;
+    }
+
+    .mdc-sigCol {
+      box-sizing: border-box;
+      text-align: right;
+    }
+
+    /* ✅ Signature image fixed size (prevents huge uploads from breaking layout) */
+    .mdc-sigImg {
+      width: 250px !important;
+      height: 100px !important;
+      max-width: 100% !important;
+
+      /* ✅ Contain keeps the whole signature visible (no cropping) */
+      object-fit: contain;
+      object-position: center;
+
+      display: block;
+      margin-left: auto;
+    }
+
+    /* ✅ line under signature */
+    .mdc-sigLine {
+      height: 1px;
+      width: 82%;
+      background: rgba(216, 177, 92, 0.55);
+      margin: 8px 0;
+      margin-left: auto;
+    }
+
+    /* ✅ Instructor name under signature */
+    .mdc-sigName {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      padding-right: 4px;
+      color: rgba(246, 241, 221, 0.92);
+      letter-spacing: 0.3px;
+    }
+
+    .mdc-sigSpacer {
+      height: 12px;
+    }
   </style>
   <body>
     <div class="page">
@@ -473,6 +535,44 @@
               </div>
 
               <div class="mdc-divider"></div>
+
+              <div class="mdc-bottom">
+                <table width="100%" class="mdc-bottomTable">
+                  <tr>
+                    <!-- ✅ Left: Seal -->
+                    <td class="mdc-sealCol">
+                      <img
+                        class="mdc-sealImg"
+                        src="Certified.png"
+                        alt="Seal"
+                        width="110"
+                        height="110"
+                      />
+                    </td>
+
+                    <!-- ✅ Right: Signature + instructor name -->
+                    <td class="mdc-sigCol">
+                      <!-- ✅ Signature image is changeable via JS -->
+                      <img
+                        class="mdc-sigImg"
+                        id="certSignatureImg"
+                        src="DefaultSig.png"
+                        alt="Signature"
+                        width="250"
+                        height="100"
+                      />
+                      <div class="mdc-sigLine"></div>
+
+                      <!-- ✅ Instructor name will be injected here -->
+                      <div class="mdc-sigName" id="certInstructor">
+                        Dr. Abdullah Mohammed
+                      </div>
+
+                      <div class="mdc-sigSpacer">&nbsp;</div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
         </div>
