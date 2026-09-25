@@ -34,6 +34,13 @@
       gap: 18px;
       align-items: start;
     }
+
+    @media (max-width: 980px) {
+      .Page {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .panel {
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.12);
@@ -426,7 +433,7 @@
     }
   </style>
   <body>
-    <div class="page">
+    <div class="Page">
       <div class="panel" id="formPanel">
         <h2>Certificate Fields</h2>
         <p class="hint">
