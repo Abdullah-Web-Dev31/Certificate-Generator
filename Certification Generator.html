@@ -39,6 +39,7 @@
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 16px;
       padding: 16px;
+      margin: 0.5rem;
     }
 
     .panel h2 {
@@ -124,38 +125,55 @@
       cursor: not-allowed;
     }
 
-       .status {
-        margin-top: 10px;
-        font-size: 12px;
-        opacity: 0.9;
-      }
+    .status {
+      margin-top: 10px;
+      font-size: 12px;
+      opacity: 0.9;
+    }
 
-      /* ✅ Green status */
-      .status.ok {
-        color: #b8ffcb;
-      }
+    /* ✅ Green status */
+    .status.ok {
+      color: #b8ffcb;
+    }
 
-      /* ✅ Red status */
-      .status.bad {
-        color: #ffb4b4;
-      }
+    /* ✅ Red status */
+    .status.bad {
+      color: #ffb4b4;
+    }
 
-      .error {
-        display: none;
-        font-size: 12px;
-        color: #ffb4b4;
-        line-height: 1.25;
-      }
+    .error {
+      display: none;
+      font-size: 12px;
+      color: #ffb4b4;
+      line-height: 1.25;
+    }
 
-      /* ✅ If row is invalid: turn border red + show error text */
-      .row.invalid input,
-      .row.invalid textarea {
-        border-color: rgba(255, 90, 90, 0.75);
-      }
-      .row.invalid .error {
-        display: block;
-      }
+    /* ✅ If row is invalid: turn border red + show error text */
+    .row.invalid input,
+    .row.invalid textarea {
+      border-color: rgba(255, 90, 90, 0.75);
+    }
+    .row.invalid .error {
+      display: block;
+    }
 
+    .previewWrap {
+      display: grid;
+      gap: 12px;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .toolbar .small {
+      font-size: 12px;
+      opacity: 0.85;
+    }
   </style>
   <body>
     <div class="page">
@@ -176,8 +194,7 @@
             placeholder="e.g., Ahmed Al Esaam"
             autocomplete="off"
           />
-                  <div class="error">Name is required (min 3 characters).</div>
-
+          <div class="error">Name is required (min 3 characters).</div>
         </div>
 
         <div class="row" id="rowCourse">
@@ -186,8 +203,7 @@
             id="courseName"
             placeholder="e.g.,Goal Settings: Crafting and Achieving Your Objectives."
           ></textarea>
-                 <div class="error">Course name is required (min 6 characters).</div>
-
+          <div class="error">Course name is required (min 6 characters).</div>
         </div>
 
         <div class="row" id="rowInstructor">
@@ -198,7 +214,7 @@
             placeholder="e.g., Dr. Mohammed Abu-Hadhoud"
             autocomplete="off"
           />
-            <div class="error">
+          <div class="error">
             Instructor name is required (min 3 characters).
           </div>
         </div>
@@ -210,14 +226,12 @@
             Upload a PNG/JPG/WebP. It will update the signature instantly.
           </div>
           <div class="error">Please upload a signature image.</div>
-
         </div>
 
         <div class="row" id="rowIssued">
           <label for="issuedDate">Issued Date</label>
           <input id="issuedDate" type="date" />
           <div class="error">Please select an issued date.</div>
-
         </div>
 
         <div class="row" id="rowSerial">
@@ -228,12 +242,12 @@
             placeholder="e.g., MD-2025-000123"
             autocomplete="off"
           />
-            <div class="error">
+          <div class="error">
             Serial is required (letters/numbers/- only, min 6).
           </div>
         </div>
 
-          <div class="actions">
+        <div class="actions">
           <button type="button" id="btnFillDemo">Fill Demo</button>
           <button type="button" id="btnReset">Reset</button>
           <button type="button" class="primary" id="btnPrint" disabled>
@@ -241,10 +255,15 @@
           </button>
         </div>
 
-        <!-- ✅ Text message showing whether form is valid or not -->
         <div class="status" id="statusLine"></div>
       </div>
-        
+      <div class="previewWrap">
+        <div class="toolbar panel">
+          <div class="small">
+            Preview (Print will output ONLY the certificate)
+          </div>
+          <div class="small" id="validBadge">❌ Not ready to print</div>
+        </div>
       </div>
     </div>
   </body>
