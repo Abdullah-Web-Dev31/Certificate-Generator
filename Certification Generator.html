@@ -91,6 +91,55 @@
       opacity: 0.8;
       line-height: 1.35;
     }
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    button {
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.08);
+      color: #e9eefc;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-weight: 650;
+      letter-spacing: 0.2px;
+    }
+    button:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+    button.primary {
+      background: rgba(90, 170, 255, 0.22);
+      border-color: rgba(90, 170, 255, 0.35);
+    }
+    button.primary:hover {
+      background: rgba(90, 170, 255, 0.28);
+    }
+
+    /* ✅ Disabled button state */
+    button:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+       .status {
+        margin-top: 10px;
+        font-size: 12px;
+        opacity: 0.9;
+      }
+
+      /* ✅ Green status */
+      .status.ok {
+        color: #b8ffcb;
+      }
+
+      /* ✅ Red status */
+      .status.bad {
+        color: #ffb4b4;
+      }
+
   </style>
   <body>
     <div class="page">
@@ -153,6 +202,19 @@
             autocomplete="off"
           />
         </div>
+
+          <div class="actions">
+          <button type="button" id="btnFillDemo">Fill Demo</button>
+          <button type="button" id="btnReset">Reset</button>
+          <button type="button" class="primary" id="btnPrint" disabled>
+            Print A4 Landscape
+          </button>
+        </div>
+
+        <!-- ✅ Text message showing whether form is valid or not -->
+        <div class="status" id="statusLine"></div>
+      </div>
+        
       </div>
     </div>
   </body>
