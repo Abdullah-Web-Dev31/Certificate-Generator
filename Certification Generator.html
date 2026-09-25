@@ -247,6 +247,23 @@
       font-family: "Courier New", monospace;
       letter-spacing: 0.2px;
     }
+    .mdc-header {
+      text-align: center;
+      margin-top: 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ✅ Logo image style */
+    .mdc-logo {
+      display: block;
+      margin: 0 auto 10px;
+      border-radius: 10px;
+
+      /* ✅ Responsive logo sizing */
+      width: 30%;
+      height: auto;
+    }
   </style>
   <body>
     <div class="page">
@@ -352,6 +369,9 @@
                   </td>
                 </tr>
               </table>
+              <div class="mdc-header">
+                <img class="mdc-logo" src="Logo.png" alt="Logo" />
+              </div>
             </div>
           </div>
         </div>
