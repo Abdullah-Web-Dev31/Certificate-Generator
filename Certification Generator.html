@@ -264,6 +264,92 @@
       width: 30%;
       height: auto;
     }
+
+    .mdc-school {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      padding-top: 5px;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: rgba(246, 241, 221, 0.88);
+    }
+
+    /* ✅ Main certificate title */
+    .mdc-title {
+      text-align: center;
+      margin: 16px 0 6px;
+      font-size: 25px;
+      font-weight: 700;
+      color: #f7e7b6;
+      letter-spacing: 0.4px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ✅ Subtitle under title */
+    .mdc-subtitle {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      padding: 5px 0;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: rgba(246, 241, 221, 0.8);
+      margin-bottom: 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ✅ Student name (big) */
+    .mdc-name {
+      text-align: center;
+      font-size: 31px;
+      padding: 5px 0;
+      font-weight: 700;
+      color: #fff3c9;
+      margin: 6px 0 10px;
+      letter-spacing: 0.2px;
+      position: relative;
+      z-index: 2;
+
+      /* ✅ If name is too long, show ... instead of breaking layout */
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ✅ Normal paragraph text */
+    .mdc-text {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: rgba(246, 241, 221, 0.85);
+      margin: 6px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ✅ Course title */
+    .mdc-course {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: #f7e7b6;
+      padding: 5px 0;
+      margin: 4px 0 14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ✅ Golden divider line */
+    .mdc-divider {
+      height: 1px;
+      width: 75%;
+      margin: 10px auto 16px;
+      background: rgba(216, 177, 92, 0.55);
+      position: relative;
+      z-index: 5;
+    }
   </style>
   <body>
     <div class="page">
@@ -372,6 +458,21 @@
               <div class="mdc-header">
                 <img class="mdc-logo" src="Logo.png" alt="Logo" />
               </div>
+
+              <div class="mdc-title">Certificate of Completion</div>
+              <div class="mdc-subtitle">This is proudly presented to</div>
+
+              <!-- ✅ Student name will be injected here -->
+              <div class="mdc-name" id="certName">Student Name</div>
+
+              <div class="mdc-text">for successfully completing</div>
+
+              <!-- ✅ Course name will be injected here -->
+              <div class="mdc-course" id="certCourse">
+                Course Name Goes Here
+              </div>
+
+              <div class="mdc-divider"></div>
             </div>
           </div>
         </div>
