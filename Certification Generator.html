@@ -205,6 +205,48 @@
       position: relative; /* ✅ needed for absolute children like meta and bottom section */
       overflow: hidden;
     }
+
+    .mdc-meta {
+      position: absolute;
+      top: 14px;
+      left: 34px;
+      right: 34px;
+      z-index: 5;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      color: rgba(246, 241, 221, 0.9);
+      pointer-events: none; /* ✅ prevent selecting/clicking meta when dragging/selecting */
+    }
+
+    .mdc-metaCell {
+      vertical-align: top;
+    }
+
+    .mdc-left {
+      text-align: left;
+    }
+
+    .mdc-right {
+      text-align: right;
+      padding-right: 38px;
+    }
+
+    .mdc-metaLabel {
+      opacity: 0.75;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .mdc-metaValue {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .mdc-mono {
+      font-family: "Courier New", monospace;
+      letter-spacing: 0.2px;
+    }
   </style>
   <body>
     <div class="page">
@@ -297,7 +339,20 @@
         </div>
         <div class="mdc-cert" id="cert">
           <div class="mdc-frame-outer">
-            <div class="mdc-frame-inner"></div>
+            <div class="mdc-frame-inner">
+              <table class="mdc-meta" width="100%">
+                <tr>
+                  <td class="mdc-metaCell mdc-left" width="60%">
+                    <div class="mdc-metaLabel">Issued Date</div>
+                    <div class="mdc-metaValue" id="certIssued">—</div>
+                  </td>
+                  <td class="mdc-metaCell mdc-right">
+                    <div class="mdc-metaLabel">Certificate Serial</div>
+                    <div class="mdc-metaValue mdc-mono" id="certSerial">—</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
           </div>
         </div>
       </div>
