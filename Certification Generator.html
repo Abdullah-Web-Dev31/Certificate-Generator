@@ -748,6 +748,64 @@
 
         return allOk;
       }
+
+      function onInputChange() {
+        updateCertificate();
+        validateAll();
+      }
+
+      [elName, elCourse, elInstructor, elIssued, elSerial].forEach((el) => {
+        el.addEventListener("input", onInputChange);
+        el.addEventListener("change", onInputChange);
+      });
+
+      elSignatureFile.addEventListener("change", () => {
+        applySignatureFromFile();
+        validateAll();
+      });
+
+      btnPrint.addEventListener("click", () => {
+        const ok = validateAll();
+        if (!ok) return;
+        window.print();
+      });
+
+      btnReset.addEventListener("click", () => {
+        // Clear form
+        elName.value = "";
+        elCourse.value = "";
+        elInstructor.value = "";
+        elIssued.value = "";
+        elSerial.value = "";
+        elSignatureFile.value = "";
+
+        // Restore default signature image and clean up object URL
+        if (signatureObjectUrl) {
+          URL.revokeObjectURL(signatureObjectUrl);
+          signatureObjectUrl = null;
+        }
+        certSignatureImg.src = "DefaultSig.png";
+
+        onInputChange();
+      });
+
+      btnFillDemo.addEventListener("click", () => {
+        elName.value = "Abdllah Mohammed";
+        elCourse.value =
+          "Goal Setting: Crafting and Achieving Your Objectives.";
+        elInstructor.value = "Dr. Abdullah Mohammed";
+        elIssued.value = new Date().toISOString().slice(0, 10);
+        elSerial.value = "MD-2025-000123";
+
+        // ✅ For demo only: use a known image file
+        // Note: This does NOT validate the file-input signature,
+        // because file inputs cannot be set programmatically for security.
+        certSignatureImg.src = "sig1.png";
+
+        onInputChange();
+      });
+
+      onInputChange();
     </script>
   </body>
 </html>
