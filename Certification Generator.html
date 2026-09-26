@@ -705,6 +705,49 @@
         signatureObjectUrl = URL.createObjectURL(file);
         certSignatureImg.src = signatureObjectUrl;
       }
+
+      function validateAll() {
+        const okName = validateName(elName.value);
+        const okCourse = validateCourse(elCourse.value);
+        const okInstructor = validateInstructor(elInstructor.value);
+        const okIssued = validateIssued(elIssued.value);
+        const okSerial = validateSerial(elSerial.value);
+        const okSignature = validateSignature(elSignatureFile);
+
+        // Apply visual validation styles on each row
+        setRowValid(rowName, okName);
+        setRowValid(rowCourse, okCourse);
+        setRowValid(rowInstructor, okInstructor);
+        setRowValid(rowIssued, okIssued);
+        setRowValid(rowSerial, okSerial);
+        setRowValid(rowSignature, okSignature);
+
+        // ✅ All must be true to allow printing
+        const allOk =
+          okName &&
+          okCourse &&
+          okInstructor &&
+          okIssued &&
+          okSerial &&
+          okSignature;
+
+        // ✅ Enable/disable print button
+        btnPrint.disabled = !allOk;
+
+        // ✅ Update status messages for user
+        if (allOk) {
+          statusLine.textContent = "✅ All fields are valid. Ready to print.";
+          statusLine.className = "status ok";
+          validBadge.textContent = "✅ Ready to print";
+        } else {
+          statusLine.textContent =
+            "❌ Please fix the highlighted fields to enable printing.";
+          statusLine.className = "status bad";
+          validBadge.textContent = "❌ Not ready to print";
+        }
+
+        return allOk;
+      }
     </script>
   </body>
 </html>
