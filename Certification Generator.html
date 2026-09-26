@@ -625,6 +625,48 @@
       const btnFillDemo = document.getElementById("btnFillDemo");
       const statusLine = document.getElementById("statusLine");
       const validBadge = document.getElementById("validBadge");
+
+      ////
+
+      let signatureObjectUrl = null;
+
+      function formatDate(yyyyMMdd) {
+        if (!yyyyMMdd) return "—"; // nothing selected
+        const [y, m, d] = yyyyMMdd.split("-");
+        if (!y || !m || !d) return "—"; // invalid format guard
+        return `${d} - ${m} - ${y}`;
+      }
+      ////
+
+      function validateName(value) {
+        return value.trim().length >= 3;
+      }
+
+      function validateCourse(value) {
+        return value.trim().length >= 6;
+      }
+
+      function validateInstructor(value) {
+        return value.trim().length >= 3;
+      }
+
+      function validateIssued(value) {
+        return Boolean(value); // true if date exists
+      }
+
+      function validateSerial(value) {
+        const v = value.trim();
+        if (v.length < 6) return false;
+
+        // ✅ Only allow: letters, digits, and dash
+        return /^[A-Za-z0-9-]+$/.test(v);
+      }
+
+      function validateSignature(fileInput) {
+        // fileInput.files is a list of files user selected
+        const file = fileInput.files && fileInput.files[0];
+        return Boolean(file);
+      }
     </script>
   </body>
 </html>
