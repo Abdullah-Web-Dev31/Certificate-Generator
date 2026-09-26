@@ -667,6 +667,44 @@
         const file = fileInput.files && fileInput.files[0];
         return Boolean(file);
       }
+
+      function setRowValid(rowEl, isValid) {
+        rowEl.classList.toggle("invalid", !isValid);
+      }
+
+      function updateCertificate() {
+        certName.textContent = elName.value.trim() || "Student Name";
+
+        certCourse.textContent =
+          elCourse.value.trim() || "Course Name Goes Here";
+
+        certInstructor.textContent =
+          elInstructor.value.trim() || "Instructor Name Goes Here";
+
+        certIssued.textContent = formatDate(elIssued.value);
+
+        certSerial.textContent = elSerial.value.trim() || "—";
+      }
+
+      function applySignatureFromFile() {
+        const file = elSignatureFile.files && elSignatureFile.files[0];
+        if (!file) return; // no file selected
+
+        // ✅ Ensure the selected file is actually an image
+        if (!file.type || !file.type.startsWith("image/")) {
+          return;
+        }
+
+        // ✅ Revoke previous object URL (memory leak prevention)
+        if (signatureObjectUrl) {
+          URL.revokeObjectURL(signatureObjectUrl);
+          signatureObjectUrl = null;
+        }
+
+        // ✅ Create a new temporary URL and display it
+        signatureObjectUrl = URL.createObjectURL(file);
+        certSignatureImg.src = signatureObjectUrl;
+      }
     </script>
   </body>
 </html>
